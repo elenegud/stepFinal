@@ -1,0 +1,11 @@
+<div class="flex justify-center p-7">
+  <select
+    class="select select-bordered select-info w-full max-w-xs"
+    (change)="detectChanges($event)"
+  >
+    <option value="all">{{ title }}</option>
+    <option value="{{ option }}" *ngFor="let option of data">
+      {{ option.charAt(0).toUpperCase() + option.slice(1) }}
+    </option>
+  </select>
+</div>

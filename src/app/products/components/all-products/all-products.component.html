@@ -1,0 +1,23 @@
+<app-select
+  [data]="categories"
+  [title]="'All Categories'"
+  (selectedValue)="filterCategory($event)"
+></app-select>
+
+<div class="flex justify-center">
+  <span *ngIf="loading" class="loading loading-spinner text-info"></span>
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
+    *ngIf="!loading"
+  >
+    <ng-container *ngFor="let product of products">
+      <app-product [product]="product" (item)="addToCart($event)"></app-product>
+    </ng-container>
+  </div>
+</div>
+
+<div class="toast fixed z-50" *ngIf="toast">
+  <div class="alert alert-success">
+    <span>პროდუქტი დამატებულია კალათაში.</span>
+  </div>
+</div>

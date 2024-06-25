@@ -1,0 +1,30 @@
+<div class="flex justify-center items-center p-5" *ngIf="loading">
+  <span class="loading loading-infinity loading-lg"></span>
+</div>
+<div *ngIf="!loading">
+  <div class="flex justify-center items-center p-5">
+    <div class="font-semibold text-3xl mr-2">Price :</div>
+    <div class="text-3xl font-bold">{{ product.price }} GEL </div>
+  </div>
+  <div class="flex items-center p-10">
+    <div class="w-80">
+      <img [src]="product.image" class="rounded-lg shadow-lg" alt="Product Image" />
+    </div>
+    <div class="ml-10">
+      <div class="font-bold text-xl mb-2">{{ product.title }}</div>
+      <div class="font-semibold text-lg mb-2">{{ product.category }}</div>
+      <div class="text-gray-600">{{ product.description }}</div>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary block mx-auto w-1/4" (click)="addToCart()">
+      დაამატე კალათაში
+    </button>
+  </div>
+</div>
+
+<div class="toast fixed z-50" *ngIf="toast">
+  <div class="alert alert-success">
+    <span>პროდუქტი კალატაში დამატებულია</span>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div
+  class="card h-full w-80 shadow-lg p-5 transform hover:-translate-y-2 duration-300 hover:shadow-2xl z-0"
+>
+  <figure class="h-72 object-cover rounded-xl">
+    <img [src]="product.image" alt="Product" />
+  </figure>
+  <div class="card-body flex flex-col">
+    <h2 class="card-title hover:cursor-pointer hover:text-neutral-600">
+      <a routerLink="/products/{{ product.id }}">{{ product.title }}</a>
+    </h2>
+    <p class="line-clamp-6 text-ellipsis">
+      {{ product.description }}
+    </p>
+    <div class="card-actions flex items-center justify-between">
+      <p class="font-bold text-lg">{{ product.price }} DT</p>
+      <button
+        class="btn btn-primary"
+        *ngIf="!addButton"
+        (click)="addButton = true"
+      >
+        დაამატე კალათაში
+      </button>
+      <div *ngIf="addButton" class="flex items-center justify-between">
+        <input
+          type="text"
+          placeholder="Count"
+          class="input input-bordered input-info w-28"
+          [(ngModel)]="amount"
+        />
+        <button class="btn btn-primary absolute ml-16" (click)="addToCart()">
+          დაამატე
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
